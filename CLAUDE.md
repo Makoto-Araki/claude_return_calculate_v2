@@ -18,10 +18,33 @@
 - 引数は正の整数2つ（例: `a`, `b`）
 - divide で b=0 は正の整数でないため 422 エラーを返す
 - divide の結果が小数の場合は小数点第2位を四捨五入して小数点以下を1桁にする
-- divide の四捨五入は decimal の ROUND_HALF_UP などを使う
+- divide の四捨五入は decimal の ROUND_HALF_UP を使う
 - divide で割り切れる場合は整数で返す
 - subtract で結果が負数の場合は問題なし
 - 入力が正の整数でない場合は 422 エラーを返す
+- 計算結果は整数は int、小数は float で返す
+- APIサーバーへのプロトコルは HTTP を使用する
+
+## 引数の渡し方
+
+| 演算名    | 引数の渡し方             |
+| -------- | ----------------------- |
+| add      | `GET /add?a=1&b=2`      |
+| subtract | `GET /subtract?a=1&b=2` |
+| multiply | `GET /multiply?a=1&b=2` |
+| divide   | `GET /divide?a=1&b=2`   |
+
+## HTTPメソッドの正常時・異常時のレスポンス形式
+
+```text
+{
+    "result": 3 # 正常時は結果のみ返す
+}
+
+{
+    "detail": [] # detail は FastAPI 標準の検証エラー配列
+}
+```
 
 ## 実装完了後の想定ディレクトリ構成
 
@@ -61,4 +84,3 @@ uv run ruff check .                                # lint実行
 uv run ruff format --check .                       # フォーマット差分チェック(適用しない)
 uv run mypy app/                                   # 型チェック(appディレクトリのみ対象)
 ```
-
