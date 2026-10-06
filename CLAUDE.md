@@ -46,9 +46,29 @@
 }
 ```
 
+## 開発環境
+
+- APIサーバーは Dev Container 内で起動（起動コマンドはコンテナ内で実行）
+- Dockerfile は Dev Container のイメージ定義
+
+## 開発フロー
+
+- TDD で進める（テストエージェント → 実装エージェント → レビューエージェント）
+- 各エージェントの定義は `.claude/agents/` に置く
+- レビューで承認が出るまでを最大3周とし、3周で承認されない場合、または同じ指摘が2周続いた場合は、作業を止めて報告する
+- 報告には、エンドポイント名、各周の指摘の要約、未解決の指摘、考えられる原因を含める
+
 ## 実装完了後の想定ディレクトリ構成
 
 ```text
+.claude/
+    agents/
+        test-agent.md
+        implement-agent.md
+        review-agent.md
+.devcontainer/
+    devcontainer.json
+    Dockerfile
 pyproject.toml
 app/
     main.py
