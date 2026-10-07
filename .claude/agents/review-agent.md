@@ -38,11 +38,7 @@ tools: Read, Grep, Glob, Bash
 
 1. CLAUDE.md を読み、仕様を確認する。
 2. 対象のテスト `tests/unit/test_<endpoint>.py` と実装 `app/router/<endpoint>.py` を読む。
-3. 次を実行し、結果を確認する。
-   - `uv run pytest tests/unit/ -v`
-   - `uv run ruff check .`
-   - `uv run ruff format --check .`
-   - `uv run mypy app/`
+3. CLAUDE.md「使用コマンド」の pytest（tests/unit/ 全体）、ruff check、ruff format --check、mypy を実行し、結果を確認する。
 4. 上記の観点で指摘をまとめる。
 
 ## 報告
