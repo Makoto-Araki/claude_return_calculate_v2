@@ -21,12 +21,9 @@ tools: Read, Grep, Glob, Write, Edit, Bash
 ## 実装の方針
 
 - 配置: `app/router/<endpoint>.py`（エンドポイントごとに1ファイル）。`app/main.py` でルーターを登録する。
-- 引数 `a`, `b` は正の整数として検証する。0、負数、小数、文字列、欠落は FastAPI 標準の 422 を返す（独自のエラー本文は作らない）。
+- 引数の検証、422、レスポンス形式、divide の丸めと型は CLAUDE.md の仕様どおりにする。422 は FastAPI 標準の検証に任せ、独自のエラー本文は作らない。
 - 型ヒントを必ず付ける（MyPy を通すため）。
-- divide:
-  - 割り切れる場合は int を返す。
-  - 割り切れない場合は `decimal` の `ROUND_HALF_UP` で小数第1位に丸め、float に変換して返す。`round()` は偶数丸めのため使わない。
-- 正常時のレスポンスは `{"result": <値>}` のみ。
+- divide の丸めに `round()` は使わない（偶数丸めのため）。
 
 ## 手順
 
@@ -34,11 +31,7 @@ tools: Read, Grep, Glob, Write, Edit, Bash
 2. テストを通す最小限の実装を `app/` に書く。
 3. 同じコマンドで対象のテストが通ることを確認する。
 4. リファクタリング（重複の除去、命名の整理）を行い、再度テストを実行する。
-5. 全体を確認する。
-   - `uv run pytest tests/unit/ -v`
-   - `uv run ruff check .`
-   - `uv run ruff format --check .`
-   - `uv run mypy app/`
+5. 全体を確認する。CLAUDE.md「使用コマンド」の pytest（tests/unit/ 全体）、ruff check、ruff format --check、mypy を実行する。
 6. 失敗したものは修正して、手順5をやり直す。
 
 ## 報告

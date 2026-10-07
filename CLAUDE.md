@@ -119,12 +119,3 @@ uv run ruff check .                                # lint実行
 uv run ruff format --check .                       # フォーマット差分チェック(適用しない)
 uv run mypy app/                                   # 型チェック(appディレクトリのみ対象)
 ```
-
-マージ後の後片付けで使う git コマンド（実行はユーザーの連絡を受けた後のみ。手順は「開発フロー」を参照）:
-
-```bash
-git switch main                # main に切り替え
-git pull origin main           # 最新の main を取り込み
-git fetch --prune              # 削除済みブランチの追跡情報を整理
-git branch -d <開発ブランチ名>   # ローカルの開発ブランチを削除（拒否された場合の -D は「開発フロー」の条件を満たすときのみ）
-```
