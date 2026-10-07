@@ -93,6 +93,15 @@ tests/
 - 静的チェック: MyPy
 - テスト: Pytest
 
+## コーディング規約
+
+- 命名は PEP 8 に従う（変数・関数・メソッドは `snake_case`、定数は `UPPER_SNAKE_CASE`、クラスは `CapWords`）
+- PEP 8 の準拠は Ruff の `N` ルールで検証する（設定は `pyproject.toml`）
+- 引数名は仕様どおり `a`, `b` に統一する
+- 関数名はエンドポイント名と一致させる（例: `divide`）
+- テスト関数名は `test_` で始め、観点が分かる名前にする（例: `test_divide_by_zero_returns_422`）
+- 全ての関数に型ヒントを付ける（MyPy の strict で検証する）
+
 ## 使用コマンド
 
 ```bash
