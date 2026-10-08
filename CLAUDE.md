@@ -75,6 +75,7 @@
 .devcontainer/
     devcontainer.json
     Dockerfile
+.gitignore
 pyproject.toml
 app/
     main.py
