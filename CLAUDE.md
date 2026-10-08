@@ -107,6 +107,9 @@ tests/
 - 関数名はエンドポイント名と一致させる（例: `divide`）
 - テスト関数名は `test_` で始め、観点が分かる名前にする（例: `test_divide_by_zero_returns_422`）
 - 全ての関数に型ヒントを付ける（MyPy の strict で検証する）
+- `app/` 配下のモジュールと公開関数に docstring を付ける（Google スタイル、日本語）。`tests/` 配下は対象外
+- docstring には実装の言い換えではなく、仕様上の意味を書く（例: divide は丸め方と、割り切れる場合の型）
+- docstring の有無は Ruff の `D` ルールで検証する（設定は `pyproject.toml`）
 
 ## 使用コマンド
 

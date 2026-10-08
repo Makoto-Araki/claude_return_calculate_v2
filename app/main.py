@@ -1,3 +1,5 @@
+"""計算APIサーバーのエントリポイント。"""
+
 from fastapi import FastAPI
 
 from app.router import add
