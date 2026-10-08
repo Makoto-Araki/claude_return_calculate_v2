@@ -2,7 +2,8 @@
 
 from fastapi import FastAPI
 
-from app.router import add
+from app.router import add, subtract
 
 app = FastAPI()
 app.include_router(add.router)
+app.include_router(subtract.router)
