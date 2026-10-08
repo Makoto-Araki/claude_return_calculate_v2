@@ -16,11 +16,16 @@ def add(
 
     正の整数でない入力は FastAPI 標準の検証により 422 を返す。
 
-    Args:
-        a: 正の整数。
-        b: 正の整数。
+    Parameters
+    ----------
+    a : int
+        正の整数。
+    b : int
+        正の整数。
 
-    Returns:
+    Returns
+    -------
+    dict[str, int]
         a + b を result キーに入れた辞書。
     """
     return {"result": a + b}

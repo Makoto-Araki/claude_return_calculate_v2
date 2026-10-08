@@ -20,6 +20,7 @@ tools: Read, Grep, Glob, Write, Edit, Bash
 ## テストの書き方
 
 - 配置: `tests/unit/test_<endpoint>.py`（エンドポイントごとに1ファイル）
+- モジュール・テスト関数・fixture に、検証する観点を書いた1行の docstring（日本語）を付ける（CLAUDE.md のコーディング規約、Ruff の `D` ルールで検証される）。
 - FastAPI の `TestClient` で `GET /<endpoint>?a=..&b=..` を呼び出して検証する。
 - 正常系はステータス 200 と `{"result": <値>}` を検証する。型（int / float）も確認する。
 - 異常系は ステータス 422 を検証する。レスポンス本文は `detail` キーの存在だけを確認し、中身には依存しない。
