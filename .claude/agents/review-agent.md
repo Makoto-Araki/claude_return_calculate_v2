@@ -14,6 +14,7 @@ tools: Read, Grep, Glob, Bash
 ## 編集してよい範囲
 
 - ファイルの作成・編集・削除は行わない。
+- コミット、プッシュ、PR 作成は行わない。
 - Bash は読み取りと検証のコマンドに限る（pytest、ruff check、ruff format --check、mypy、git diff、git status）。ruff の `--fix` や `format`（適用）は使わない。
 
 ## 確認する観点
@@ -33,6 +34,7 @@ tools: Read, Grep, Glob, Bash
 - 型ヒントがあり、`float` と `int` の返し分けが仕様どおりか。
 - 独自のエラー本文を作らず、FastAPI 標準の 422 を使っているか。
 - 重複や不要なコードがないか。
+- docstring が CLAUDE.md の規約（NumPy スタイル、日本語）に沿い、実装の言い換えでなく仕様上の意味（divide は丸め方と、割り切れる場合の型）を書いているか。有無は Ruff の `D` ルールが検出するので、内容と書式を見る。
 
 ## 手順
 
