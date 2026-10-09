@@ -64,6 +64,7 @@
 - 開発ブランチは `main` から切る。名前は英小文字とハイフンで付ける（例: `add-endpoint-divide`）
 - コミットメッセージ、PR のタイトルと本文は日本語で書く
 - PR は GitHub 上でスカッシュマージする。マージと GitHub 上のブランチ削除はユーザーが行う
+- PR と、マージ後の `main` で、GitHub Actions の CI（lint・フォーマット差分チェック・型チェック・テスト）が走る。CI の定義は `.github/workflows/ci.yml`。CI の成功をマージの必須条件にするブランチ保護は、ユーザーが GitHub の設定で行う
 - コミット、プッシュ、PR 作成は、ユーザーが明示的に指示するまで行わない（各エージェントも同様で、変更は作業ツリーに残して報告するだけにする）
 - ユーザーの指示は、その作業1回分の許可であり、以降の常時の許可ではない
 - ユーザーが「PR をマージし、GitHub 上の開発ブランチを削除した」と連絡したら、次の手順でローカルを後片付けして、次の依頼に備える
@@ -87,6 +88,9 @@
 .devcontainer/
     devcontainer.json
     Dockerfile
+.github/
+    workflows/
+        ci.yml
 .gitignore
 CLAUDE.md
 README.md
